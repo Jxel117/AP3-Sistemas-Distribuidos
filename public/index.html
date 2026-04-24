@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APE 3 - Sistemas Distribuidos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        .log-box { height: 250px; overflow-y: auto; scroll-behavior: smooth; font-family: monospace; }
+        .log-box::-webkit-scrollbar { width: 6px; }
+        .log-box::-webkit-scrollbar-thumb { background: #4B5563; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-8">
+
+    <header class="mb-10 text-center">
+        <h1 class="text-4xl font-bold text-blue-400 mb-2">Arquitectura de Sistemas Distribuidos</h1>
+        <p class="text-gray-400">Guía de Actividades Práctico-Experimentales Nro. 003</p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <h2 class="text-xl font-semibold text-green-400 mb-4">1. Dilema de la Taquilla (Mutex)</h2>
+            <div id="ej1" class="log-box bg-gray-950 p-4 rounded border border-gray-700 text-sm"></div>
+        </div>
+
+        <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <h2 class="text-xl font-semibold text-yellow-400 mb-4">2. El Gimnasio (Semáforos)</h2>
+            <div id="ej2" class="log-box bg-gray-950 p-4 rounded border border-gray-700 text-sm"></div>
+        </div>
+
+        <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <h2 class="text-xl font-semibold text-purple-400 mb-4">3. Vitrina (Prod-Consumidor)</h2>
+            <div id="ej3" class="log-box bg-gray-950 p-4 rounded border border-gray-700 text-sm"></div>
+        </div>
+
+        <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <h2 class="text-xl font-semibold text-pink-400 mb-4">4. Tablón (Lectores-Escritores)</h2>
+            <div id="ej4" class="log-box bg-gray-950 p-4 rounded border border-gray-700 text-sm"></div>
+        </div>
+
+        <div class="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <h2 class="text-xl font-semibold text-cyan-400 mb-4">5. Barrera de Sincronización</h2>
+            <div id="ej5" class="log-box bg-gray-950 p-4 rounded border border-gray-700 text-sm"></div>
+        </div>
+    </div>
+
+    <script>
+        const socket = io();
+
+        socket.on('log', (data) => {
+            const container = document.getElementById(data.ejercicio);
+            if (container) {
+                const p = document.createElement('p');
+                p.textContent = `> ${data.mensaje}`;
+                p.className = 'mb-1 text-gray-300';
+                container.appendChild(p);
+                container.scrollTop = container.scrollHeight; // Auto-scroll
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "ap3-sistemas-distribuidos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jxel117/AP3-Sistemas-Distribuidos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jxel117/AP3-Sistemas-Distribuidos/issues"
+  },
+  "homepage": "https://github.com/Jxel117/AP3-Sistemas-Distribuidos#readme",
+  "dependencies": {
+    "async-mutex": "^0.5.0",
+    "async-sema": "^3.1.1",
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3"
+  }
+}
